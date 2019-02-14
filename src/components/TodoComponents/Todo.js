@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Todo = props => {
-    return (
-        <div>
-            {this.state.tasks};
-            <TodoForm />
-        </div>
-    );
-  };
 
 
-// export default Todo;
+class Todo extends React.Component {
+    render() {
+        return (
+            <div className="todo-list">
+                {this.props.task}
+            </div>
+        );
+    }
+}
+
+export default Todo;
