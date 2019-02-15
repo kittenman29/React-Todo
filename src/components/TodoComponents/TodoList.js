@@ -1,18 +1,21 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
+/* 5. Build out the component */
 import React from 'react';
 import Todo from './Todo'
 
-class TodoList extends React.Component {
-    render() {
-        return (
-        <div className="todo-list">
-          {this.props.taskObjects.map((tasksFromMap, task) => (
-            <Todo key={task} task={tasksFromMap} />
-          ))}
-        </div>
-        );
-    }
+/* 7. Map over the component props */
+/* 8. The Todo component takes in props of banana and returns banana 
+if you add a custom attribute to a custom component, it gets passed in as props. in this case it's banana={} on the custom
+component <Todo/> */
+
+const TodoList = props => {
+  return (
+    <div className="mapped-todo-list">
+      {props.taskObjects.map(banana => (
+        <Todo banana={banana} />
+      ))}
+    </div>
+  );
 }
+
 
 export default TodoList;

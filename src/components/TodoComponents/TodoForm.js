@@ -1,30 +1,35 @@
 import React from 'react';
+/* 10. Build a form with an input. Import/export it appropriately */
+/* 11. Add the piece of state that is going to control the input and pass it into the input function*/
+/* 12. Add a function to handle the changes of the form input*/
+/* 13. Call the function whenever there is a change on the input*/
+/* 14. Define a function in a parent component and pass it down to the child component via a callback function
+       invoke the callback function and pass it on */
+
+
 
 class TodoForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        task: '',
-      };
-    }
-    render(props) {
-      return (
-        <React.Fragment>
-        <form 
-          className="input-box"
-          type="text"
-          value={props.task}
-          name="task" 
-          onClick={props.listTask}
-          placeholder=""
-          >
-          {this.state.task}
-        </form>
-        <button type="submit">Add Task</button>
-        <button type="click">Clear All</button>
-        </React.Fragment>
-      );
+  constructor() {
+    super();
+    this.state = {
+      banana: '',
     }
   }
 
-// export default TodoForm;
+  renderStateChanges = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  render() {
+    return (
+      <form onSubmit={e => this.props.addTaskObject(e, this.state.banana)}>
+        <input type='text' value={this.state.banana} name='banana' onChange={this.renderStateChanges} />
+      <button>Add Task</button>
+      <button>Clear All</button>
+      </form>
+    );
+  }
+}
+
+
+export default TodoForm;

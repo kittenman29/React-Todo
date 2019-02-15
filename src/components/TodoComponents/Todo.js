@@ -1,15 +1,15 @@
 import React from 'react';
 
+/* 9. Make a new component and pass in props from the TodoList aka banana={} */
 
 
-class Todo extends React.Component {
-    render() {
-        return (
-            <div className="todo-list">
-                {this.props.task}
-            </div>
-        );
-    }
+const Todo = props => {
+    return (
+        <div className="todo-list">
+            <p>{props.banana.task}</p>
+        </div>
+    );
 }
+
 
 export default Todo;
