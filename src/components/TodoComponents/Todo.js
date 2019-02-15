@@ -5,7 +5,10 @@ import React from 'react';
 
 const Todo = props => {
     return (
-        <div className="todo-list">
+        <div 
+        className={`banana${props.banana.completed ? ' completed' : ''}`}
+        onClick={() => props.toggleTask(props.banana.id)} 
+        >
             <p>{props.banana.task}</p>
         </div>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import { isBoolean } from 'util';
 
+
+
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from './components/TodoComponents/TodoForm'
 
@@ -59,14 +61,39 @@ class App extends React.Component {
     });
   };
 
+  toggleTask = bananaID => {
+    this.setState({
+      taskObjects: this.state.taskObjects.map(banana => {
+        if (bananaID === banana.id) {
+          return {...banana, completed: !banana.completed};
+        }
+        return banana;
+      })
+    });
+  };
+
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      taskObjects: this.state.taskObjects.filter(banana => !banana.completed)
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="header">
           <h1>To Do List</h1>
-          <TodoForm addTaskObject={this.addTaskObject} />
+          <TodoForm 
+          addTaskObject={this.addTaskObject} 
+          clearCompleted={this.clearCompleted}
+          />
         </div>
-        <TodoList taskObjects={this.state.taskObjects} />  
+        <TodoList 
+        taskObjects={this.state.taskObjects} 
+        toggleTask={this.toggleTask}
+        />
+        <button onClick={this.clearCompleted}>Clear All</button>  
       </div>
     );
   }
